@@ -797,7 +797,7 @@ function renderGifts() {
           '<div class="gift-price">$' +
           gift.price +
           "</div>" +
-          '<a href="javascript:void(0)" class="gift-cta">View Deal</a>' +
+          '<a href="javascript:void(0)" class="gift-cta" onclick="openDetailModal(\'' + safeName + '\', \'' + gift.desc.replace(/'/g, "\\'") + '\', ' + gift.price + ', \'gift\')">View Deal</a>' +
           "</div>" +
           "</div>"
         );
@@ -842,7 +842,7 @@ function renderExperiences() {
       '<div class="exp-price">' +
       exp.price +
       "</div>" +
-      '<a href="#" class="exp-cta">Details</a>' +
+      '<a href="javascript:void(0)" class="exp-cta" onclick="openDetailModal(\'' + exp.name.replace(/'/g, "\\'") + '\', \'' + exp.desc.replace(/'/g, "\\'") + '\', \'' + exp.price + '\', \'experience\')">Details</a>' +
       "</div>" +
       "</div>"
     );
@@ -867,7 +867,7 @@ function renderLastMinute() {
       "<p>" +
       item.desc +
       "</p>" +
-      '<a href="#" class="lm-link">Find Options <i class="fas fa-arrow-right"></i></a>' +
+      '<a href="javascript:void(0)" class="lm-link" onclick="openDetailModal(\'' + item.name.replace(/'/g, "\\'") + '\', \'' + item.desc.replace(/'/g, "\\'") + '\', \'Varies\', \'lastminute\')">Find Options <i class="fas fa-arrow-right"></i></a>' +
       "</div>"
     );
   }).join("");
@@ -1121,8 +1121,8 @@ function initMobileNav() {
   }
 }
 
-/* ===== GLBOAL HELPERS ===== */
-function scrollTo(selector) {
+/* ===== GLOBAL HELPERS ===== */
+function smoothScrollTo(selector) {
   var el = document.querySelector(selector);
   if (el) el.scrollIntoView({ behavior: "smooth" });
 }
@@ -1131,10 +1131,51 @@ function showModal(title, body) {
   var overlay = document.getElementById("modalOverlay");
   var t = document.getElementById("modalTitle");
   var b = document.getElementById("modalBody");
+  // Clean up previous actions if any
+  var actions = document.querySelector(".modal-actions");
+  if(actions) actions.innerHTML = '<button class="btn btn-secondary" onclick="closeModal()">Close</button>';
 
   if (t) t.textContent = title;
   if (b) b.textContent = body;
   if (overlay) overlay.classList.add("open");
+}
+
+function openDetailModal(name, desc, price, type) {
+    var overlay = document.getElementById("modalOverlay");
+    var t = document.getElementById("modalTitle");
+    var b = document.getElementById("modalBody");
+    var actions = document.querySelector(".modal-actions");
+    
+    if (t) t.textContent = name;
+    
+    var content = desc + '<br><br><strong>Price Estimate: ' + (typeof price === 'number' ? '$'+price : price) + '</strong>';
+    if(type === 'experience') content += '<br><em>Experience vouchers available online or locally.</em>';
+    
+    if (b) b.innerHTML = content;
+    
+    // Create Secure Link (Goal Oriented)
+    var searchUrl = getSecureLink(name, type);
+    var btnText = type === 'gift' ? 'Check Amazon Price' : (type === 'experience' ? 'Book Experience' : 'Find Options');
+    var icon = type === 'gift' ? 'shopping-cart' : 'calendar-search';
+    
+    if(actions) {
+        actions.innerHTML = 
+            '<a href="' + searchUrl + '" target="_blank" class="btn btn-primary" style="margin-right:10px; text-decoration:none;">' +
+            '<i class="fas fa-' + icon + '"></i> ' + btnText + '</a>' +
+            '<button class="btn btn-secondary" onclick="closeModal()">Close</button>';
+    }
+        
+    if (overlay) overlay.classList.add("open");
+}
+
+function getSecureLink(name, type) {
+    var query = encodeURIComponent(name);
+    if(type === 'gift' || type === 'lastminute') {
+        return 'https://www.amazon.com/s?k=' + query + '&tag=cupidspicks-20'; 
+    } else if(type === 'experience') {
+         return 'https://www.google.com/search?q=' + query + '+near+me';
+    }
+    return '#';
 }
 
 function closeModal() {
@@ -1143,8 +1184,9 @@ function closeModal() {
 }
 
 // Global scope exposure for inline onclicks
-window.scrollTo = scrollTo;
+window.smoothScrollTo = smoothScrollTo;
 window.showModal = showModal;
+window.openDetailModal = openDetailModal;
 window.closeModal = closeModal;
 window.filterCategory = filterCategory;
 window.handleQuizAnswer = handleQuizAnswer;
