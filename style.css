@@ -659,8 +659,8 @@ html.dark .gift-tag {
 }
 
 /* Gift visual gradients */
-.cat-card.adventure {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-adventure.jpg'), linear-gradient(135deg, #1b5e20, #66bb6a);
+.cat-card.tech {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-tech.jpg'), linear-gradient(135deg, #0d47a1, #1976d2);
   background-size: cover;
   background-position: center;
 }
