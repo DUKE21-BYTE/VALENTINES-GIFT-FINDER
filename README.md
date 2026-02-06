@@ -11,8 +11,18 @@
 - **🌍 Local & Virtual Experiences**: A dedicated section for booking real-world dates (dinner cruises, spa days) or virtual bonding activities for long-distance couples.
 - **⚡ Last-Minute Savers**: A "Panic Button" section for instant digital gifts that don't look like an afterthought.
 - **❤️ Favorites System**: innovative local-storage based wishlist letting users "heart" items and save them for later comparison.
-- **📱 Mobile-First Design**: Fully responsive UI that feels native on mobile devices, ensuring users can browse on the go.
+- **� Monetization Ready**: Integrated Skimlinks and Amazon Associates support for affiliate revenue generation.
+- **�📱 Mobile-First Design**: Fully responsive UI that feels native on mobile devices, ensuring users can browse on the go.
 - **🔍 SEO Optimized**: Built with JSON-LD Schema, Open Graph tags, and semantic HTML to rank high for seasonal keywords.
+
+## 📅 Development Log
+
+### Day 11: Monetization & Polish (Feb 2026)
+
+- ✅ **Affiliate Integration**: Added Skimlinks script and Amazon placeholder tags.
+- ✅ **Visual Overhaul**: Added custom high-quality background images for all gift categories.
+- ✅ **Legal Compliance**: Added Privacy Policy and Terms of Service pages.
+- ✅ **SEO Boost**: Optimized meta tags for "Free" and "Budget" keywords.
 
 ## 🛠️ Technology Stack
 
