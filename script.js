@@ -1164,29 +1164,105 @@ function openDetailModal(name, desc, price, type) {
     
     if (b) b.innerHTML = content;
     
-    // Create Secure Link (Goal Oriented)
-    var searchUrl = getSecureLink(name, type);
-    var btnText = type === 'gift' ? 'Check Amazon Price' : (type === 'experience' ? 'Book Experience' : 'Find Options');
-    var icon = type === 'gift' ? 'shopping-cart' : 'calendar-search';
+    // Smart Link Logic
+    var linkData = getSmartLink(name, type);
     
     if(actions) {
         actions.innerHTML = 
-            '<a href="' + searchUrl + '" target="_blank" class="btn btn-primary" style="margin-right:10px; text-decoration:none;">' +
-            '<i class="fas fa-' + icon + '"></i> ' + btnText + '</a>' +
+            '<a href="' + linkData.url + '" target="_blank" class="btn btn-primary" style="margin-right:10px; text-decoration:none;">' +
+            '<i class="fas fa-' + linkData.icon + '"></i> ' + linkData.text + '</a>' +
             '<button class="btn btn-secondary" onclick="closeModal()">Close</button>';
     }
         
     if (overlay) overlay.classList.add("open");
 }
 
-function getSecureLink(name, type) {
+function getSmartLink(name, type) {
+    var lower = name.toLowerCase();
     var query = encodeURIComponent(name);
-    if(type === 'gift' || type === 'lastminute') {
-        return 'https://www.amazon.com/s?k=' + query + '&tag=cupidspicks-20'; 
-    } else if(type === 'experience') {
-         return 'https://www.google.com/search?q=' + query + '+near+me';
+    
+    // Default fallback
+    var result = {
+        url: '#',
+        text: 'Find Options',
+        icon: 'search'
+    };
+
+    // 1. MUSIC & SPOTIFY
+    if (lower.includes("spotify") || lower.includes("playlist")) {
+        return {
+            url: "https://open.spotify.com/",
+            text: "Open Spotify",
+            icon: "music"
+        };
     }
-    return '#';
+
+    // 2. VIDEO MESSAGES (Cameo)
+    if (lower.includes("cameo") || lower.includes("video message")) {
+        return {
+            url: "https://www.cameo.com/",
+            text: "Explore Cameo",
+            icon: "video"
+        };
+    }
+
+    // 3. ONLINE CLASSES (MasterClass/Udemy)
+    if (lower.includes("class") || lower.includes("course") || lower.includes("workshop")) {
+        return {
+            url: "https://www.masterclass.com/",
+            text: "Browse MasterClass",
+            icon: "laptop"
+        };
+    }
+
+    // 4. FLOWERS (1-800-Flowers)
+    if (lower.includes("flower") || lower.includes("bouquet")) {
+        return {
+            url: "https://www.1800flowers.com/",
+            text: "Order Flowers",
+            icon: "seedling"
+        };
+    }
+
+    // 5. BOOKS (Bookshop.org - Sustainable)
+    if (lower.includes("book") && !lower.includes("coupon") && !lower.includes("scrapbook")) {
+        return {
+            url: "https://bookshop.org/",
+            text: "Find Books",
+            icon: "book"
+        };
+    }
+    
+    // 6. DIY / PRINTABLES (Etsy/Pinterest)
+    if (lower.includes("coupon") || lower.includes("printable") || lower.includes("scrapbook") || lower.includes("letter")) {
+        return {
+            url: "https://www.etsy.com/search?q=" + query,
+            text: "Find Guides/Templates",
+            icon: "pencil"
+        };
+    }
+    
+    // 7. SUBSCRIPTIONS (Cratejoy)
+    if (lower.includes("subscription box")) {
+        return {
+            url: "https://www.cratejoy.com/search?q=" + query,
+            text: "Browse Boxes",
+            icon: "box-open"
+        };
+    }
+
+    // FALLBACKS BASED ON TYPE
+    if(type === 'gift' || type === 'lastminute') {
+        result.url = 'https://www.amazon.com/s?k=' + query + '&tag=cupidspicks-20';
+        result.text = 'Check Amazon';
+        result.icon = 'shopping-cart';
+    } else if(type === 'experience') {
+         result.url = 'https://www.google.com/search?q=' + query + '+near+me';
+         result.text = 'Find Near Me';
+         result.icon = 'map-marker-alt';
+    }
+    
+    return result;
 }
 
 function closeModal() {
