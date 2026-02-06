@@ -664,6 +664,21 @@ html.dark .gift-tag {
   background-size: cover;
   background-position: center;
 }
+.cat-card.creative {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-creative.jpg'), linear-gradient(135deg, #7b1fa2, #ab47bc);
+  background-size: cover;
+  background-position: center;
+}
+.cat-card.wellness {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-wellness.jpg'), linear-gradient(135deg, #c2185b, #e91e63);
+  background-size: cover;
+  background-position: center;
+}
+.cat-card.distance {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-distance.jpg'), linear-gradient(135deg, #00838f, #00acc1);
+  background-size: cover;
+  background-position: center;
+}
 .vis-food {
   background: linear-gradient(135deg, #ffccbc, #ffab91);
   color: #bf360c;
