@@ -949,21 +949,32 @@ function renderQuiz() {
 
     container.innerHTML = html;
   } else {
-    // Results
+    // Results - Generate AI Prompt
+    var tags = quizResultTags.join(", ");
+    var prompt = "Help me find a Valentine's Day gift. My partner is into: " + tags + ". Please suggest 5 creative, specific gift ideas that match these interests.";
+    var aiLink = "https://chatgpt.com/?q=" + encodeURIComponent(prompt);
+
     var html =
       '<div class="quiz-results">' +
       '<div style="font-size:3rem; margin-bottom:16px; color:var(--rose);"><i class="fas fa-gift"></i></div>' +
       "<h3>We've Found Some Ideas!</h3>" +
-      "<p>Based on your answers, we recommend focusing on these categories:</p>" +
-      '<div class="quiz-result-tags">' +
-      quizResultTags
-        .map(function (t) {
-          return '<div class="quiz-result-tag">#' + t + "</div>";
-        })
-        .join("") +
-      "</div>" +
-      '<button class="btn btn-primary" onclick="scrollToGifts()">View Recommendations</button>' +
-      '<br><br><button class="btn btn-secondary" onclick="resetQuiz()" style="font-size:0.8rem; padding:8px 16px;">Retake Quiz</button>' +
+      "<p>Based on your answers (<b>" + tags.replace(/_/g, " ") + "</b>), we have two options for you:</p>" +
+      
+      '<div style="display:flex; flex-direction:column; gap:12px; max-width:300px; margin:0 auto;">' +
+      
+      // Button 1: AI Custom Recommendation
+      '<a href="' + aiLink + '" target="_blank" class="btn btn-primary" style="justify-content:center; background: linear-gradient(135deg, #74AA9C, #10a37f);">' +
+      '<i class="fas fa-robot"></i> Get AI Custom Plan' +
+      '</a>' +
+      
+      // Button 2: Internal Scroll
+      '<button class="btn btn-secondary" onclick="scrollToGifts()" style="justify-content:center;">' +
+      'Browse Curated Picks' +
+      '</button>' +
+      
+      '</div>' +
+
+      '<br><button class="btn" onclick="resetQuiz()" style="font-size:0.8rem; color:var(--text-muted); text-decoration:underline;">Retake Quiz</button>' +
       "</div>";
     container.innerHTML = html;
   }
