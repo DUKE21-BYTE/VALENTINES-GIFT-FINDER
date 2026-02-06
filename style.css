@@ -658,26 +658,54 @@ html.dark .gift-tag {
   transform: scale(1.05);
 }
 
-/* Gift visual gradients */
-.cat-card.tech {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-tech.jpg'), linear-gradient(135deg, #0d47a1, #1976d2);
-  background-size: cover;
-  background-position: center;
+/* Category Background Images */
+.cat-foodie {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/cat-foodie.jpg'), linear-gradient(135deg, #7b1fa2, #e91e63);
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
 }
-.cat-card.creative {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-creative.jpg'), linear-gradient(135deg, #7b1fa2, #ab47bc);
-  background-size: cover;
-  background-position: center;
+.cat-adventure {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/cat-adventure.jpg'), linear-gradient(135deg, #1b5e20, #66bb6a);
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
 }
-.cat-card.wellness {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-wellness.jpg'), linear-gradient(135deg, #c2185b, #e91e63);
-  background-size: cover;
-  background-position: center;
+.cat-tech {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/cat-tech.jpg'), linear-gradient(135deg, #0d47a1, #1976d2);
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
 }
-.cat-card.distance {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/cat-distance.jpg'), linear-gradient(135deg, #00838f, #00acc1);
-  background-size: cover;
-  background-position: center;
+.cat-creative {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/cat-creative.jpg'), linear-gradient(135deg, #7b1fa2, #ab47bc);
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
+}
+.cat-wellness {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/cat-wellness.jpg'), linear-gradient(135deg, #c2185b, #e91e63);
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
+}
+.cat-distance {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/cat-distance.jpg'), linear-gradient(135deg, #00838f, #00acc1);
+  background-size: cover !important;
+  background-position: center !important;
+  color: #fff !important;
+}
+
+/* Ensure text is readable on images */
+.category-card[class*="cat-"] h3,
+.category-card[class*="cat-"] p {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.category-card[class*="cat-"] .category-icon {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  color: #fff;
 }
 .vis-food {
   background: linear-gradient(135deg, #ffccbc, #ffab91);
