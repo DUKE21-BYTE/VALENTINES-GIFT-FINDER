@@ -963,7 +963,7 @@ function renderQuiz() {
       '<div style="display:flex; flex-direction:column; gap:12px; max-width:300px; margin:0 auto;">' +
       
       // Button 1: AI Custom Recommendation
-      '<a href="' + aiLink + '" target="_blank" class="btn btn-primary" style="justify-content:center; background: linear-gradient(135deg, #74AA9C, #10a37f);">' +
+      '<a href="' + aiLink + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="justify-content:center; background: linear-gradient(135deg, #74AA9C, #10a37f);">' +
       '<i class="fas fa-robot"></i> Get AI Custom Plan' +
       '</a>' +
       
@@ -1169,7 +1169,7 @@ function openDetailModal(name, desc, price, type) {
     
     if(actions) {
         actions.innerHTML = 
-            '<a href="' + linkData.url + '" target="_blank" class="btn btn-primary" style="margin-right:10px; text-decoration:none;">' +
+            '<a href="' + linkData.url + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-right:10px; text-decoration:none;">' +
             '<i class="fas fa-' + linkData.icon + '"></i> ' + linkData.text + '</a>' +
             '<button class="btn btn-secondary" onclick="closeModal()">Close</button>';
     }
