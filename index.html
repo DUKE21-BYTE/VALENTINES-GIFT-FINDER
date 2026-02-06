@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Gift & Experience Finder 2026 | Cupid's Picks</title>
+    <meta name="description" content="Find the perfect Valentine's Day gift in minutes. Take our 2026 quiz for personalized gift ideas, romantic experiences, and last-minute surprises tailored to your budget." />
+    <meta name="keywords" content="Valentine's Day 2026, gift finder, romantic gifts, date ideas, gift quiz, last minute valentine gifts" />
+    <meta name="author" content="Cupid's Picks">
+    <meta name="theme-color" content="#C2185B">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cupidspicks.com/" />
+    <meta property="og:title" content="Valentine's Gift & Experience Finder 2026" />
+    <meta property="og:description" content="Discover curated gifts and experiences for your valentine. Shop by interest, budget, or take our personalization quiz." />
+    <meta property="og:image" content="https://cupidspicks.com/assets/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://cupidspicks.com/" />
+    <meta property="twitter:title" content="Valentine's Gift & Experience Finder 2026" />
+    <meta property="twitter:description" content="Find the perfect gift in minutes with our 2026 Valentine's finder." />
+    <meta property="twitter:image" content="https://cupidspicks.com/assets/og-image.jpg" />
+
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:;">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cupid's Picks Gift Finder",
+      "url": "https://cupidspicks.com",
+      "description": "Interactive tool to find the perfect Valentine's Day gifts and experiences.",
+      "applicationCategory": "Shopping",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "500"
+      }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-inner">
+        <a href="#hero" class="logo"
+          ><i class="fas fa-heart"></i> Cupid's Picks</a
+        >
+        <nav class="nav">
+          <a href="#categories">Gifts</a>
+          <a href="#experiences">Experiences</a>
+          <a href="#quiz-section">Quiz</a>
+          <a href="#last-minute">Last Minute</a>
+          <a href="#favorites" id="favLink" style="display:none"><i class="fas fa-heart"></i> Favorites</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#hero" class="mobile-link">Home</a>
+      <a href="#categories" class="mobile-link">Gift Categories</a>
+      <a href="#gifts" class="mobile-link">Top Gifts</a>
+      <a href="#experiences" class="mobile-link">Experiences</a>
+      <a href="#quiz-section" class="mobile-link">Take the Quiz</a>
+      <a href="#last-minute" class="mobile-link">Last Minute</a>
+      <a href="#favorites" class="mobile-link" id="mobFavLink" style="display:none">Favorites</a>
+    </div>
+    <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hearts-container" id="heartsContainer"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-calendar-heart"></i> Valentine's Day — Feb 14, 2026
+        </div>
+        <h1>Find the <em>Perfect</em> Valentine's Gift in Minutes</h1>
+        <p>
+          Personalized gift ideas and unforgettable experiences curated by
+          interest, budget, and love language. Don't let the day slip by.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollTo('#quiz-section')">
+            <i class="fas fa-magic"></i> Start the Quiz
+          </button>
+          <button class="btn btn-secondary" onclick="scrollTo('#categories')">
+            <i class="fas fa-gift"></i> Browse Gifts
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num" id="countdownDays">--</div>
+            <div class="label">Days Left</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">120+</div>
+            <div class="label">Curated Ideas</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">6</div>
+            <div class="label">Interest Categories</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <div class="section" style="padding-bottom: 0">
+      <div class="countdown-bar reveal" id="countdownBar">
+        <h3><i class="fas fa-clock"></i> Time Until Valentine's Day</h3>
+        <div class="countdown-units">
+          <div class="countdown-unit">
+            <div class="val" id="cdDays">--</div>
+            <div class="lbl">Days</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="val" id="cdHours">--</div>
+            <div class="lbl">Hours</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="val" id="cdMins">--</div>
+            <div class="lbl">Mins</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="val" id="cdSecs">--</div>
+            <div class="lbl">Secs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categories">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i class="fas fa-sparkles"></i> Find the Perfect Gift For…
+        </div>
+        <h2>Shop by Interest</h2>
+        <p>
+          Select a category to see curated gifts tailored to your valentine's
+          personality.
+        </p>
+      </div>
+      <div class="categories-grid reveal" id="categoriesGrid"></div>
+    </section>
+
+    <!-- GIFTS -->
+    <div class="section-alt">
+      <section class="section" id="gifts">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <i class="fas fa-gift"></i> Curated Picks
+          </div>
+          <h2>Top Gift Ideas</h2>
+          <p>
+            Filter by budget and category. Every pick is handpicked for
+            Valentine's 2026.
+          </p>
+        </div>
+        <div class="price-filters reveal" id="priceFilters">
+          <button class="price-btn active" data-price="all">All Prices</button>
+          <button class="price-btn" data-price="30">Under $30</button>
+          <button class="price-btn" data-price="50">Under $50</button>
+          <button class="price-btn" data-price="100">Under $100</button>
+          <button class="price-btn" data-price="premium">
+            Premium Splurges
+          </button>
+        </div>
+        <div class="gifts-grid" id="giftsGrid"></div>
+        <div class="no-results" id="noResults" style="display: none">
+          <i class="fas fa-search"></i>
+          <p>
+            No gifts match your current filters. Try a different combination!
+          </p>
+        </div>
+        <div class="affiliate-notice">
+          <i class="fas fa-info-circle"></i> Some links may be affiliate links.
+          We may earn a small commission at no extra cost to you.
+        </div>
+      </section>
+    </div>
+
+    <!-- EXPERIENCES -->
+    <section class="section" id="experiences">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i class="fas fa-heart"></i> Valentine's Experiences
+        </div>
+        <h2>Book an Experience Today</h2>
+        <p>
+          Create memories that last forever — from local activities to virtual
+          date nights.
+        </p>
+      </div>
+      <div class="experiences-row reveal" id="experiencesGrid"></div>
+    </section>
+
+    <!-- QUIZ -->
+    <div class="section-alt" id="quiz-section">
+      <section class="section">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <i class="fas fa-wand-magic-sparkles"></i> Personalized for You
+          </div>
+          <h2>What Does Your Valentine Love?</h2>
+          <p>
+            Answer 4 quick questions and get tailored gift and experience
+            recommendations.
+          </p>
+        </div>
+        <div class="quiz-container reveal" id="quizContainer"></div>
+      </section>
+    </div>
+
+    <!-- LAST MINUTE -->
+    <section class="section" id="last-minute">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i class="fas fa-bolt"></i> Need Something Fast?
+        </div>
+        <h2>Last-Minute Ideas</h2>
+        <p>
+          Quick gifts and gestures you can arrange today — no shipping anxiety.
+        </p>
+      </div>
+      <div class="last-minute-grid reveal" id="lastMinuteGrid"></div>
+    </section>
+
+    <!-- LOCAL EXPERIENCES -->
+    <div class="section-alt">
+      <section class="section" id="local">
+        <div class="section-header reveal">
+          <div class="section-label">
+            <i class="fas fa-map-pin"></i> Explore Locally
+          </div>
+          <h2>Local Experiences & Reservations</h2>
+          <p>
+            Discover romantic activities and dining experiences in your area.
+          </p>
+        </div>
+        <div class="local-grid reveal" id="localGrid"></div>
+      </section>
+    </div>
+
+      </section>
+</div>
+</main>
+
+<!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3><i class="fas fa-heart"></i> Cupid's Picks</h3>
+          <p>
+            Your go-to guide for thoughtful Valentine's Day gifts and
+            experiences. Curated with love for 2026.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#categories">Gift Categories</a>
+          <a href="#gifts">Top Gifts</a>
+          <a href="#experiences">Experiences</a>
+          <a href="#quiz-section">Gift Quiz</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#last-minute">Last Minute Ideas</a>
+          <a href="#local">Local Experiences</a>
+          <a href="#hero">Back to Top</a>
+        </div>
+        <div class="footer-col">
+          <h4>Information</h4>
+          <a
+            href="javascript:void(0)"
+            onclick="
+              showModal(
+                'About Us',
+                'Cupid\'s Picks is a curated Valentine\'s gift guide. We handpick the best gifts and experiences to make your Valentine\'s Day unforgettable.',
+              )
+            "
+            >About</a
+          >
+          <a
+            href="javascript:void(0)"
+            onclick="
+              showModal(
+                'Contact',
+                'For partnerships and inquiries, reach out through our social channels.',
+              )
+            "
+            >Contact</a
+          >
+          <a
+            href="javascript:void(0)"
+            onclick="
+              showModal(
+                'Affiliate Disclosure',
+                'Some links on this site are affiliate links. We may earn a commission from qualifying purchases at no additional cost to you. All recommendations are genuine and curated by our team.',
+              )
+            "
+            >Affiliate Disclosure</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >&copy; 2026 Cupid's Picks. Made with
+          <i class="fas fa-heart" style="color: var(--rose)"></i
+        ></span>
+        <span>Valentine's Day is Saturday, February 14, 2026</span>
+      </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <h3 id="modalTitle"></h3>
+        <p id="modalBody"></p>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" onclick="closeModal()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
